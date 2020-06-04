@@ -5,7 +5,7 @@ import {
   TableForeignKey,
 } from 'typeorm';
 
-export default class CreateCollectPointsItemsModel1591203662875
+export default class CreateCollectionPointsItemsModel1591227307671
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
@@ -46,7 +46,7 @@ export default class CreateCollectPointsItemsModel1591203662875
         name: 'CollectPointsKey',
         columnNames: ['collect_point_id'],
         referencedColumnNames: ['id'],
-        referencedTableName: 'collection_points',
+        referencedTableName: 'collect_points',
         onDelete: 'NO ACTION',
         onUpdate: 'CASCADE',
       }),

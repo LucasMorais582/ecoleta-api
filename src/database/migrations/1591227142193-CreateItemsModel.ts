@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export default class CreateCollectPointsModel1591149822848
+export default class CreateItemsModel1591227142193
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'collection_points',
+        name: 'items',
         columns: [
           {
             name: 'id',
@@ -15,32 +15,16 @@ export default class CreateCollectPointsModel1591149822848
             default: 'uuid_generate_v4()',
           },
           {
+            name: 'title',
+            type: 'varchar',
+          },
+          {
             name: 'image',
             type: 'varchar',
           },
           {
-            name: 'name',
+            name: 'filepath',
             type: 'varchar',
-          },
-          {
-            name: 'email',
-            type: 'varchar',
-          },
-          {
-            name: 'whatsapp',
-            type: 'varchar',
-          },
-          {
-            name: 'geometry',
-            type: 'integer[][]',
-          },
-          {
-            name: 'city',
-            type: 'varchar',
-          },
-          {
-            name: 'uf',
-            type: 'varchar(2)',
           },
           {
             name: 'created_at',
@@ -55,7 +39,7 @@ export default class CreateCollectPointsModel1591149822848
           {
             name: 'deleted_at',
             type: 'timestamp',
-            default: 'now()',
+            isNullable: true,
           },
         ],
       }),
@@ -63,6 +47,6 @@ export default class CreateCollectPointsModel1591149822848
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('collection_points');
+    await queryRunner.dropTable('items');
   }
 }

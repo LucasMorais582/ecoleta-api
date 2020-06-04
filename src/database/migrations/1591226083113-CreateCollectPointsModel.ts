@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export default class CreateItemsModel1591158290046
+export default class CreateCollectPointsModel1591226083113
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'items',
+        name: 'collect_points',
         columns: [
           {
             name: 'id',
@@ -15,8 +15,32 @@ export default class CreateItemsModel1591158290046
             default: 'uuid_generate_v4()',
           },
           {
-            name: 'title',
+            name: 'image',
             type: 'varchar',
+          },
+          {
+            name: 'name',
+            type: 'varchar',
+          },
+          {
+            name: 'email',
+            type: 'varchar',
+          },
+          {
+            name: 'whatsapp',
+            type: 'varchar',
+          },
+          {
+            name: 'geometry',
+            type: 'integer[][]',
+          },
+          {
+            name: 'city',
+            type: 'varchar',
+          },
+          {
+            name: 'uf',
+            type: 'varchar(2)',
           },
           {
             name: 'created_at',
@@ -31,7 +55,7 @@ export default class CreateItemsModel1591158290046
           {
             name: 'deleted_at',
             type: 'timestamp',
-            default: 'now()',
+            isNullable: true,
           },
         ],
       }),
@@ -39,6 +63,6 @@ export default class CreateItemsModel1591158290046
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('items');
+    await queryRunner.dropTable('collect_points');
   }
 }
